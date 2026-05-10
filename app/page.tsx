@@ -85,7 +85,16 @@ export default function Home() {
       }));
       setConfettiTrigger((c) => c + 1);
     }
-    setModal(null);
+    // If no unlocks, close immediately. If there is an unlocks scenario,
+    // LessonPlayer will show the completion card before calling onExit.
+    if (!currentLesson.unlocks) setModal(null);
+  };
+
+  const launchUnlockedScenario = () => {
+    if (!currentLesson?.unlocks) return;
+    const idx = scenarios.findIndex((s) => s.id === currentLesson.unlocks);
+    if (idx < 0) { setModal(null); return; }
+    startScenario(idx);
   };
 
   const commitDecision = (id: string) => {
@@ -172,7 +181,12 @@ export default function Home() {
           <motion.div key="lesson-modal"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-bg overflow-auto">
-            <LessonPlayer lesson={currentLesson} onComplete={completeLesson} onExit={() => setModal(null)} />
+            <LessonPlayer
+              lesson={currentLesson}
+              onComplete={completeLesson}
+              onExit={() => setModal(null)}
+              onTrySimulator={currentLesson.unlocks ? launchUnlockedScenario : undefined}
+            />
           </motion.div>
         )}
 

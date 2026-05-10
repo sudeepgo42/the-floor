@@ -7,23 +7,65 @@ import type { Lesson, LessonCard } from '@/lib/lessons';
 type Answer = { selected: any; correct: boolean };
 
 export function LessonPlayer({
-  lesson, onComplete, onExit,
+  lesson, onComplete, onExit, onTrySimulator,
 }: {
-  lesson: Lesson; onComplete: () => void; onExit: () => void;
+  lesson: Lesson; onComplete: () => void; onExit: () => void; onTrySimulator?: () => void;
 }) {
   const [cardIndex, setCardIndex] = useState(0);
   const [answered, setAnswered] = useState<Record<number, Answer>>({});
+  const [showCompletion, setShowCompletion] = useState(false);
 
   const card = lesson.cards[cardIndex];
   const isLast = cardIndex === lesson.cards.length - 1;
   const currentAnswer = answered[cardIndex];
 
   const next = () => {
-    if (isLast) onComplete();
-    else setCardIndex(cardIndex + 1);
+    if (isLast) {
+      onComplete();
+      if (onTrySimulator) {
+        setShowCompletion(true);
+      }
+    } else {
+      setCardIndex(cardIndex + 1);
+    }
   };
 
   const setAnswer = (a: Answer) => setAnswered({ ...answered, [cardIndex]: a });
+
+  if (showCompletion && onTrySimulator) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 py-8 max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="w-full text-center"
+        >
+          <div className="text-6xl mb-6">⚡</div>
+          <div className="text-xs font-mono uppercase tracking-wider text-electric mb-3">Lesson complete</div>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-4">
+            +{lesson.xpReward} XP earned
+          </h1>
+          <p className="text-muted text-lg mb-10">
+            Ready to test what you just learned against a real market scenario?
+          </p>
+          <div className="space-y-3">
+            <button
+              onClick={onTrySimulator}
+              className="shine w-full bg-text text-bg py-4 rounded-xl font-semibold transition-all hover:scale-[1.01]"
+            >
+              Try it in the simulator →
+            </button>
+            <button
+              onClick={onExit}
+              className="w-full bg-surface border border-border py-4 rounded-xl font-semibold text-muted hover:text-text transition-colors"
+            >
+              Back to lessons
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col px-6 py-8 max-w-2xl mx-auto">

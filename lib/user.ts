@@ -1,4 +1,4 @@
-export type Goal = 'first-portfolio' | 'understand-markets' | 'active-trading';
+export type Goal = 'first-portfolio' | 'understand-markets' | 'grow-wealth';
 export type SkillLevel = 'never' | 'dabbled' | 'regular';
 
 export type UserProfile = {
@@ -31,7 +31,7 @@ export const initialState: UserState = {
 export const GOAL_CONFIG: Record<Goal, { label: string; description: string; emoji: string }> = {
   'first-portfolio': { label: 'Build my first portfolio', description: 'Get started investing with confidence.', emoji: '🌱' },
   'understand-markets': { label: 'Understand how markets work', description: 'Learn the foundations, no rush.', emoji: '🧠' },
-  'active-trading': { label: 'Learn to trade actively', description: 'Strategies, timing, and the harder game.', emoji: '⚡' },
+  'grow-wealth': { label: 'Grow my wealth long-term', description: 'Compound returns, not quick wins.', emoji: '📈' },
 };
 
 export const SKILL_CONFIG: Record<SkillLevel, { label: string; description: string }> = {

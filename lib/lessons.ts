@@ -22,6 +22,7 @@ export const lessons: Lesson[] = [
   {
     id: 'compounding', number: 1, title: 'The magic of compounding', subtitle: 'Why time matters more than timing',
     emoji: '📈', estMinutes: 3, xpReward: 50,
+    unlocks: 'bull-2017',
     cards: [
       { type: 'concept', title: 'What compounding actually is',
         body: 'When you earn returns on your investment, those returns start earning returns of their own. Over time, this snowballs. The longer you let it run, the bigger the snowball.' },
@@ -42,6 +43,7 @@ export const lessons: Lesson[] = [
   {
     id: 'dca-vs-lump', number: 2, title: 'DCA vs lump sum', subtitle: 'Two ways to put money to work',
     emoji: '⚖️', estMinutes: 3, xpReward: 50,
+    unlocks: 'bull-2017',
     cards: [
       { type: 'concept', title: 'Two strategies',
         body: 'Lump sum means investing everything at once. Dollar-cost averaging (DCA) means spreading the same amount over months or years. Which one wins?' },
@@ -62,6 +64,7 @@ export const lessons: Lesson[] = [
   {
     id: 'inflation', number: 3, title: 'Inflation, the silent tax', subtitle: 'Why cash is not safe',
     emoji: '🔥', estMinutes: 3, xpReward: 50,
+    unlocks: 'inflation-2022',
     cards: [
       { type: 'concept', title: 'What inflation does',
         body: 'Inflation is the rate at which prices rise. If inflation is 3%, the same basket of groceries that costs $100 today costs $103 next year. Your cash, sitting still, has lost 3% of what it can buy.' },
@@ -83,6 +86,7 @@ export const lessons: Lesson[] = [
   {
     id: 'asset-classes', number: 4, title: 'The main asset classes', subtitle: 'Stocks, bonds, cash, property',
     emoji: '🏛️', estMinutes: 4, xpReward: 60,
+    unlocks: 'rates-2022',
     cards: [
       { type: 'concept', title: 'The big four',
         body: 'Stocks own a piece of a company. Bonds lend money for interest. Cash earns very little but is safe day-to-day. Property earns rent and may appreciate. Each behaves differently in different conditions.' },
@@ -99,6 +103,7 @@ export const lessons: Lesson[] = [
   {
     id: 'dividends', number: 5, title: 'Dividends explained', subtitle: 'When companies pay you to own them',
     emoji: '💰', estMinutes: 3, xpReward: 50,
+    unlocks: 'dividend-2015',
     cards: [
       { type: 'concept', title: 'What a dividend is',
         body: 'A dividend is cash a company pays its shareholders, usually quarterly, from its profits. Owning the stock means receiving these payments simply for being a shareholder.' },
@@ -160,6 +165,7 @@ export const lessons: Lesson[] = [
   {
     id: 'volatility', number: 8, title: 'Volatility is normal', subtitle: 'How often markets actually fall',
     emoji: '🌊', estMinutes: 3, xpReward: 60,
+    unlocks: 'correction-2018',
     cards: [
       { type: 'concept', title: 'Drops are part of the deal',
         body: 'The stock market does not go up in a straight line. Pullbacks of 5-10% happen multiple times a year. 20% bear markets happen on average once every 4-5 years. This is normal, not unusual.' },
@@ -180,6 +186,7 @@ export const lessons: Lesson[] = [
   {
     id: 'panic-selling', number: 9, title: 'The panic-selling trap', subtitle: 'Why selling low is the costliest mistake',
     emoji: '😰', estMinutes: 3, xpReward: 60,
+    unlocks: 'gfc-2008',
     cards: [
       { type: 'concept', title: 'Loss aversion',
         body: 'Humans feel losses about twice as strongly as equivalent gains. Watching $10k drop to $7k feels worse than watching it rise to $13k feels good. This wiring is why so many people sell at the worst possible moment.' },
@@ -199,6 +206,7 @@ export const lessons: Lesson[] = [
   {
     id: 'bubbles', number: 10, title: 'How bubbles work', subtitle: 'When everyone is right until everyone is wrong',
     emoji: '🫧', estMinutes: 4, xpReward: 70,
+    unlocks: 'dotcom-1999',
     cards: [
       { type: 'concept', title: 'The pattern repeats',
         body: 'Bubbles share a script. New technology or asset attracts attention. Prices rise. More people pile in. Prices rise further on optimism alone. Late buyers borrow to participate. The story breaks. Prices collapse.' },
@@ -220,6 +228,7 @@ export const lessons: Lesson[] = [
   {
     id: 'fomo', number: 11, title: 'FOMO is a strategy killer', subtitle: 'Chasing what is hot',
     emoji: '🚀', estMinutes: 3, xpReward: 60,
+    unlocks: 'meme-2021',
     cards: [
       { type: 'concept', title: 'Fear of missing out',
         body: 'FOMO drives people to buy after big rises and sell after big drops. It is performance-chasing dressed up as conviction. It feels rational because the asset really is rising. The problem is, by the time you have noticed, the easy money is gone.' },
