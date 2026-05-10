@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background: #0A0A0F;
+  color: #FAFAFA;
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
+}
+
+/* Tabular numerals globally for numbers */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Aurora background */
+.aurora-bg {
+  position: relative;
+  overflow: hidden;
+}
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(180, 123, 255, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 60%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 100%, rgba(0, 230, 118, 0.08) 0%, transparent 50%);
+  animation: aurora 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes aurora {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-5%, 3%) rotate(2deg); }
+  66% { transform: translate(3%, -2%) rotate(-1deg); }
+}
+
+/* Grid pattern background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Shine effect for buttons */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.6s ease;
+}
+.shine:hover::after {
+  left: 100%;
+}
+
+/* Card glow on hover */
+.card-glow {
+  transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-glow:hover {
+  transform: translateY(-2px);
+  border-color: rgba(180, 123, 255, 0.4);
+  box-shadow: 0 0 0 1px rgba(180, 123, 255, 0.3),
+              0 20px 40px -20px rgba(180, 123, 255, 0.4);
+}
+
+/* Confetti dots */
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(120vh) rotate(720deg); opacity: 0; }
+}
+.confetti-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  animation: confetti-fall 2.5s ease-in forwards;
+}
+
+/* Number ticker effect */
+@keyframes count-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.tick-num {
+  display: inline-block;
+  animation: count-up 0.4s ease-out;
+}
+
+/* XP bar pulse */
+@keyframes xp-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
+}
+.xp-glow { animation: xp-pulse 2s ease-in-out infinite; }
+
+/* Lock icon scale */
+.locked {
+  filter: grayscale(0.7) brightness(0.5);
+  transition: filter 300ms;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #13131A; }
+::-webkit-scrollbar-thumb { background: #2A2A38; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3A3A48; }
+
+/* Recharts dark mode adjustments */
+.recharts-cartesian-axis-tick-value { fill: #7B7B8B !important; }
+.recharts-tooltip-cursor { stroke: #2A2A38 !important; }
+
+/* Page transitions */
+.page-enter {
+  animation: page-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
